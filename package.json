@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clavichcov/news_explorer_backend.git"
+  },
+  "keywords": [],
+  "author": "Alexander Artemiev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clavichcov/news_explorer_backend/issues"
+  },
+  "homepage": "https://github.com/clavichcov/news_explorer_backend#readme",
+  "description": "Backend for the News Explorer project",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
