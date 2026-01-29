@@ -34,3 +34,7 @@ https://github.com/clavichcov/news_explorer_backend
 
 ## 🚀 Direccion de producción
 
+MONGODB_URI=mongodb://app_user:NewsExplorerApp2026!@34.45.51.104:27017/news_explorer?authSource=news_explorer
+PORT=3001
+BASE_PATH=http://localhost:3001
+JWT_SECRET=NewsFinalProject2026
