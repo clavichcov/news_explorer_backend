@@ -14,10 +14,15 @@ const auth = require('./middlewares/auth');
 
 const { PORT = 3001, BASE_PATH } = process.env;
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
   origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
     'https://newsfinalsprint.chickenkiller.com',
     'https://www.newsfinalsprint.chickenkiller.com',
     'https://api.newsfinalsprint.chickenkiller.com'
@@ -53,23 +58,19 @@ app.get('/newsapi/everything', async (req, res) => {
         
         res.json(response.data);
     } catch (error) {
-        console.error('Proxy error:', error.message);
-        res.status(500).json({ 
-            error: 'Error fetching news',
-            details: error.message 
+        console.error('Proxy error details:', {
+          message: error.message,
+          response: error.response?.data,
+          status: error.response?.status
+        });
+        res.status(error.response?.status || 500).json({ 
+          error: 'Error fetching news',
+          details: error.response?.data || error.message 
         });
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Proxy server running on port ${PORT}`);
-});
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.post('/signup', createUser);
-
 app.post('/signin', login);
 
 app.use('/articles', auth, articlesRouter);
@@ -77,7 +78,14 @@ app.use('/users', auth, usersRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.listen(PORT, () => {
-  console.log('Enlace al servidor en el puerto:', PORT);
-  console.log(BASE_PATH);
-
-})
+  console.log('================================');
+  console.log(`Servidor corriendo en puerto: ${PORT}`);
+  console.log(`URL: http://localhost:${PORT}`);
+  console.log('Endpoints disponibles:');
+  console.log(`  • POST /signup`);
+  console.log(`  • POST /signin`);
+  console.log(`  • GET /newsapi/everything?q=...`);
+  console.log(`  • GET /articles (protegido)`);
+  console.log(`  • GET /users/me (protegido)`);
+  console.log('================================');
+});
