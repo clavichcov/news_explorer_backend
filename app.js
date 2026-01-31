@@ -21,16 +21,30 @@ app.use(express.json());
 
 app.use(cors({
   origin: [
-    'http://localhost:3000',
-    'http://localhost:5173',
+    'http://newsfinalsprint.chickenkiller.com',
     'https://newsfinalsprint.chickenkiller.com',
+    'http://www.newsfinalsprint.chickenkiller.com',
     'https://www.newsfinalsprint.chickenkiller.com',
-    'https://api.newsfinalsprint.chickenkiller.com'
+    'http://api.newsfinalsprint.chickenkiller.com',
+    'https://api.newsfinalsprint.chickenkiller.com',
+    'http://localhost:3000',
+    'http://localhost:5173'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+  allowedHeaders: [
+    'Content-Type', 
+    'Authorization', 
+    'Accept',
+    'Origin',
+    'X-Requested-With',
+    'Access-Control-Allow-Origin'
+  ],
+  exposedHeaders: ['Content-Length', 'Content-Type'],
+  maxAge: 86400,
 }));
+
+app.options('*', cors());
 
 mongoose.connect(
   process.env.MONGODB_URI ||
