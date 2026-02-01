@@ -44,8 +44,6 @@ app.use(cors({
   maxAge: 86400,
 }));
 
-app.options('*', cors());
-
 mongoose.connect(
   process.env.MONGODB_URI ||
   'mongodb://app_user:NewsExplorerApp2026!@localhost:27017/news_explorer?authSource=news_explorer', {
