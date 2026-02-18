@@ -46,10 +46,13 @@ app.use(cors({
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  'mongodb://app_user:NewsExplorerApp2026!@localhost:27017/news_explorer?authSource=news_explorer', {
+  'mongodb+srv://app_user:NewsExplorerApp2026@cluster0.ktbqxad.mongodb.net/?appName=Cluster0', {
   serverSelectionTimeoutMS: 5000,
-  socketTimeoutMS: 45000, 
-})
+  socketTimeoutMS: 45000,
+  tls: true,
+  tlsCertificateKeyFile:'./X509-cert-8739053631668568416.pem' 
+}
+)
 .then(() => console.log('Conexión a la base de datos establecida'))
 .catch(err => console.error('Error al conectar a la base de datos:', err));
 
