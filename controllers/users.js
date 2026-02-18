@@ -29,9 +29,7 @@ module.exports.createUser = (req, res) => {
   const {
     email,
     password,
-    name,
-    about,
-    picture
+    name
   } = req.body;
   if (!email || !password) {
     return res.status(400).json({
@@ -43,18 +41,14 @@ module.exports.createUser = (req, res) => {
       return User.create({
         email,
         password: hash,
-        name,
-        about,
-        picture
+        name
       });
     })
   .then((user) => {
       const userResponse = {
         _id: user._id,
         email: user.email,
-        name: user.name,
-        about: user.about,
-        picture: user.picture
+        name: user.name
       };
       res.status(201).send(userResponse);
     })
@@ -107,8 +101,6 @@ module.exports.getUserMe = (req, res) => {
       res.send({
         _id: user._id,
         name: user.name,
-        about: user.about,
-        picture: user.picture,
         email: user.email
       });
     })
