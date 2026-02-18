@@ -27,6 +27,8 @@ app.use(cors({
     'https://www.newsfinalsprint.chickenkiller.com',
     'http://api.newsfinalsprint.chickenkiller.com',
     'https://api.newsfinalsprint.chickenkiller.com',
+    'https://news-explorer-frontend-amber.vercel.app/',
+    'https://news-explorer-backend-seven.vercel.app/',
     'http://localhost:3000',
     'http://localhost:5173'
   ],
