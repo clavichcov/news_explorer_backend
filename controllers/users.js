@@ -31,7 +31,7 @@ module.exports.createUser = (req, res) => {
     password,
     name
   } = req.body;
-  if (!email || !password) {
+  if (!email || !password || !name) {
     return res.status(400).json({
       message: 'El correo electrónico y la contraseña son obligatorios'
     });
@@ -64,6 +64,7 @@ module.exports.createUser = (req, res) => {
           errors: Object.values(err.errors).map(error => error.message)
         });
       }
+      console.error('Error en registro:', err);
       res.status(500).send({ message: 'Error del servidor', error: err });
     });
 };

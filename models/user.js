@@ -30,14 +30,14 @@ const userSchema = new mongoose.Schema({
 
   about: {
     type: String,
-    required: [true, 'La descripción es obligatoria'],
+    //required: [true, 'La descripción es obligatoria'],
     minlength: [2, 'Debe tener al menos 2 caracteres'],
     maxlength: 200,
     trim: true
   },
   picture: {
     type: String,
-    required: [true, 'El enlace de la foto es obligatorio'],
+    //required: [true, 'El enlace de la foto es obligatorio'],
     validate: {
       validator: function(v) {
         return /^https?:\/\/(www\.)?[a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(v);
