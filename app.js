@@ -27,8 +27,8 @@ app.use(cors({
     'https://www.newsfinalsprint.chickenkiller.com',
     'http://api.newsfinalsprint.chickenkiller.com',
     'https://api.newsfinalsprint.chickenkiller.com',
-    'https://news-explorer-frontend-amber.vercel.app/',
-    'https://news-explorer-backend-seven.vercel.app/',
+    'https://news-explorer-frontend-amber.vercel.app',
+    'https://news-explorer-backend-seven.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173'
   ],
@@ -51,8 +51,7 @@ mongoose.connect(
   'mongodb+srv://app_user:NewsExplorerApp2026@cluster0.ktbqxad.mongodb.net/?appName=Cluster0', {
   serverSelectionTimeoutMS: 5000,
   socketTimeoutMS: 45000,
-  tls: true,
-  tlsCertificateKeyFile:'./X509-cert-8739053631668568416.pem' 
+  
 }
 )
 .then(() => console.log('Conexión a la base de datos establecida'))
