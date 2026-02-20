@@ -19,10 +19,9 @@ module.exports.addArticle = (req, res) => {
     keyword, 
     title, 
     description, 
-    image_link, 
-    article_link
+    urlToImage, 
+    publishedAt
     
-
     } 
     = req.body;
   const owner = req.user._id;
@@ -30,8 +29,8 @@ module.exports.addArticle = (req, res) => {
     keyword,
     title, 
     description, 
-    image_link, 
-    article_link,
+    urlToImage, 
+    publishedAt,
      
     owner 
     })

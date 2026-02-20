@@ -10,19 +10,18 @@ const cardSchema = new mongoose.Schema({
         type: String,
         
     },
-    image_link: {
-        type: String,
-        
-    },
-    article_link: {
+    urlToImage: {
         type: String,
         
     },
     owner: {
+        ref: 'user',
         type: mongoose.Schema.Types.ObjectId,
         select: false
     },
-    
+    publishedAt: {
+        type: Date,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
