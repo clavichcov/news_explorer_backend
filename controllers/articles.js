@@ -61,10 +61,11 @@ module.exports.deleteArticle = (req, res) => {
   
   Article.findOneAndDelete({
     _id: articleId,
+    owner: req.user._id,
   })
     .select('+owner')
     .then(deletedArticle => {
-      if (!deletedArticle || deletedArticle.owner.toString() !== req.user._id.toString()) {
+      if (!deletedArticle) {
         return res.status(404).send({
           message: 'Artículo no encontrado o no tienes permisos'
         });
