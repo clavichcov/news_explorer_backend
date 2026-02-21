@@ -10,9 +10,11 @@ const cardSchema = new mongoose.Schema({
         type: String,
         
     },
+    url:{
+        type: String,
+    },
     urlToImage: {
         type: String,
-        
     },
     owner: {
         ref: 'user',
@@ -27,7 +29,10 @@ const cardSchema = new mongoose.Schema({
         default: Date.now,
     },
     source: {
-        type: String,
+        name: {
+            type: String,
+        }
+        
     },
   
 });
