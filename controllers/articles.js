@@ -51,16 +51,16 @@ module.exports.addArticle = (req, res) => {
 };
 
 module.exports.deleteArticle = (req, res) => {
-  const { articleId } = req.params;
+  const { _id } = req.params;
   
-  if (!mongoose.Types.ObjectId.isValid(articleId)) {
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(400).send({
       message: 'ID del artículo no válido'
     });
   }
   
   Article.findOneAndDelete({
-    _id: articleId,
+    _id: _id,
     owner: req.user._id,
   })
     .select('+owner')
