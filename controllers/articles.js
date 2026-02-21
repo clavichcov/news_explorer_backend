@@ -20,7 +20,8 @@ module.exports.addArticle = (req, res) => {
     title, 
     description, 
     urlToImage, 
-    publishedAt
+    publishedAt,
+    source
     
     } 
     = req.body;
@@ -31,6 +32,7 @@ module.exports.addArticle = (req, res) => {
     description, 
     urlToImage, 
     publishedAt,
+    source,
      
     owner 
     })
