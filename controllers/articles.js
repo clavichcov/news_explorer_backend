@@ -18,7 +18,8 @@ module.exports.addArticle = (req, res) => {
   const { 
     keyword, 
     title, 
-    description, 
+    description,
+    url, 
     urlToImage, 
     publishedAt,
     source
@@ -30,13 +31,19 @@ module.exports.addArticle = (req, res) => {
     keyword,
     title, 
     description, 
+    url,
     urlToImage, 
     publishedAt,
     source,
      
-    owner 
+    owner: req.user._id 
     })
-    .then(article => res.status(201).send({ data: article }))
+    .then(article => {
+      return Article.findById(article._id).select('-owner');
+    })
+    .then(article => {
+      res.status(201).json(article);
+    })
     .catch(err => {
       console.error('Error al agregar el articulo:', err);
       if (err.name === 'ValidationError') {
